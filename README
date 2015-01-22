@@ -1,0 +1,110 @@
+
+
+
+
+                               Board Games Online
+
+    
+
+    --- TL;DR; ---
+    
+    A web and mobile app for playing board games.
+
+    Users have a always rotating sub-set of a large collection of board
+    games available on their phone, for free use. A user may decide to
+    purchase a game, making it permanently available on their device.
+
+
+    --- Introduction ---
+
+    After downloading the app, the user is presented with a number of
+    board games for immediate use. The sub-set of these games that are
+    single player, do not require an account with [APP_NAME]. However, the
+    multiplayer games do require login, and can be played through 
+    Apple's Game Center or Android's [TODO].
+    A game stays on the user's device for [X] number of days before a 
+    it is replaced with a different one. This introduces the user to new 
+    games and prevents a user from playing a particular game indefinetly
+    for free.
+    If a user does enjoy a game, s/he can purchase the game and it will 
+    be permanently installed on the device. This is the only source of
+    revenue for [APP_NAME].
+
+
+    --- Architecture --- 
+
+    The games will be available on the web and mobil apps (available
+    on Android, iOS & Windows Phone). [APP_NAME] will provide a 
+    seamless experience for users, regardless of the platform used.
+    The multiplayer aspect is also very important, so the web app will
+    need to integrate with the mobile app perfectly (e.g. a smartphone
+    app user can play against a web app user).
+    The code base will be written in JavaScript and shared between the
+    web and mobile apps. Also, all games will use the a common 
+    JavaScript library to handle board creation and interaction.
+    Individual games will build on top of this library to reduce
+    development time and offer the user a familiar look and feel.
+    
+    The mobile app will use a web view to render the content while 
+    the web app will render the content in the browser. There are a
+    number of major advantages to this approach, namely:
+
+        - New board games can be added to and removed from the app
+          after the user downloads it. A background process can
+          download new games from the private game repository and
+          remove ones that have reached their time limit.
+
+        - Since the library codebase is shared, updates can be sent
+          to all users, regardless of platform, at the same time.
+    
+    The JavaScript library (boardgame.js) will provide methods to 
+    create, interact and receive events associated with boards. Code 
+    specific to each game will use these events to implement the
+    game-specific rules.
+
+        -- Android --
+            
+        Android 2.3.* (or API 9) and upwards is supported. Some CSS3,
+        HTML5 and JavaScript bridge issues are present in older 
+        versions of JavaScript, but there exist workarounds for most.
+
+        -- iOS --
+
+        iOS 7.0 and upwards is supported. There are no major issues
+        known in the web view available in these versions.
+
+        -- Windows Phone --
+
+        Expected support is for version 8.1 and upwards. 
+    
+
+    --- User Experience ---
+    
+    The app is designed to give the user the best board game
+    playing experience available today. The app should utilize
+    HTML5, JavaScript, CSS3, etc, to their maximum potential
+    to give a native-like feel to the games. At the same time,
+    features should gracefully degrade so that older platforms
+    are also supported.
+
+
+    --- Games ---
+
+    The first games that will be available will be from Scientific
+    American's column by Martin Gardner MATHEMATICAL GAMES.
+
+    --- Other ---
+
+    Game source code can be obfuscated from the user of the web app,
+    and will be inaccessible to the user of the mobile app.
+
+        
+        
+
+        
+
+     
+    
+        
+    
+

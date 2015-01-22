@@ -13,6 +13,7 @@
 		32675A6B1A708D25009CE460 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32675A6A1A708D25009CE460 /* Images.xcassets */; };
 		32675A6E1A708D25009CE460 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32675A6C1A708D25009CE460 /* LaunchScreen.xib */; };
 		32675A7A1A708D25009CE460 /* PVSBoardGamesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32675A791A708D25009CE460 /* PVSBoardGamesTests.swift */; };
+		32675A841A7099A4009CE460 /* PVSMyGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32675A831A7099A4009CE460 /* PVSMyGamesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		32675A731A708D25009CE460 /* PVSBoardGamesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PVSBoardGamesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32675A781A708D25009CE460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32675A791A708D25009CE460 /* PVSBoardGamesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVSBoardGamesTests.swift; sourceTree = "<group>"; };
+		32675A831A7099A4009CE460 /* PVSMyGamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSMyGamesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				32675A631A708D25009CE460 /* AppDelegate.swift */,
 				32675A651A708D25009CE460 /* ViewController.swift */,
 				32675A671A708D25009CE460 /* Main.storyboard */,
+				32675A831A7099A4009CE460 /* PVSMyGamesViewController.swift */,
 				32675A6A1A708D25009CE460 /* Images.xcassets */,
 				32675A6C1A708D25009CE460 /* LaunchScreen.xib */,
 				32675A611A708D25009CE460 /* Supporting Files */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32675A841A7099A4009CE460 /* PVSMyGamesViewController.swift in Sources */,
 				32675A661A708D25009CE460 /* ViewController.swift in Sources */,
 				32675A641A708D25009CE460 /* AppDelegate.swift in Sources */,
 			);
