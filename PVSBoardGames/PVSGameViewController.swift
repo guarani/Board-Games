@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class PVSGameViewController: UIViewController {
     
     var context: JSContext = JSContext()
@@ -16,33 +15,42 @@ class PVSGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        var console = JSValue(newObjectInContext: context)
-        //
-        //        var block: @objc_block (NSString!) -> Void = {
-        //            (string: NSString!) -> Void in
-        //            println(string)
-        //        }
-        //        console.setObject(unsafeBitCast(block, AnyObject.self), forKeyedSubscript: "console")
+        self.navigationController?.navigationBar.translucent = false
+        
+        // Initialize the board context interface to JavaScript. From now on we sit back and let the
+        // JavaScript code make the game.
+        var board = PVSBoard(createBoardInView:self.view, withContext:context)
+        
+        
+//        var console = JSValue(newObjectInContext: context)
+//
+//        var block: @objc_block (NSString!) -> Void = {
+//            (string: NSString!) -> Void in
+//            println(string)
+//        }
+//        console.setObject(unsafeBitCast(block, AnyObject.self), forKeyedSubscript: "pvsmsg")
         //
         //        let javaScriptPath = NSBundle.mainBundle().pathForResource("game", ofType: "js")
         //        let javaScriptData = NSData(contentsOfFile: javaScriptPath!)
         //        let javaScriptString = NSString(data: javaScriptData!, encoding: NSUTF8StringEncoding)
         //        context.evaluateScript(javaScriptString)
         
+//        self.context.setObject(PVSBoard.self, forKeyedSubscript: "Person")
     
-        self.navigationController?.navigationBar.translucent = false
         
         
-        self.context.exceptionHandler = {ctx, exception in
-            println("JS Error: \(exception)")
-        }
+//        self.context.exceptionHandler = {ctx, exception in
+//            println("JS Error: \(exception)")
+//        }
     
-        var PVSBoardInterface: @objc_block JSValue -> Void =  {options in
-            let size = options.objectForKeyedSubscript("size").toNumber() as Int
-            PVSBoard(createBoardOfSize: size, inView: self.view)
-        }
-        self.context.setObject(unsafeBitCast(PVSBoardInterface, AnyObject.self), forKeyedSubscript: "PVSBoard")
+//        var PVSBoardInterface: @objc_block JSValue -> PVSBoard =  {options in
+//            let size = options.objectForKeyedSubscript("size").toNumber() as Int
+//            return PVSBoard(createBoardOfSize: size, inView: self.view)
+//        }
+//        self.context.setObject(unsafeBitCast(PVSBoardInterface, AnyObject.self), forKeyedSubscript: "PVSBoard")
         
+
+//        var board = PVSBoard(createBoardOfSize: 3, inView: self.view)
 
 //        let sayHello: @objc_block JSValue -> Void = { options in
 //            var opts = options.toDictionary()

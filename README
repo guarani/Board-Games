@@ -113,4 +113,6 @@
         #import "JavaScriptCore/JSExport.h"
         #import "JavaScriptCore/JSValue.h"
 
+    Also, the JSContext seems to only show up in sarari if it's
+    initialized inside a UIViewController subclass.
 

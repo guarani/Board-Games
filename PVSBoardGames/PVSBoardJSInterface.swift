@@ -27,19 +27,4 @@ class PVSBoardJSInterface: NSObject {
         let javaScriptString = NSString(data: javaScriptData!, encoding: NSUTF8StringEncoding)
         context.evaluateScript(javaScriptString)
     }
-
-////    var context = JSContext()
-//    var
-//    
-//    var console = JSValue.valueWithNewObjectInContext(self.context)
-//    console["log"] = {(string: NSString) in
-//        println(string)
-//    }
-    
-//    [JSValue valueWithNewObjectInContext:self.context];
-//    console[@"log"] = ^void(NSString* string) {
-//    NSLog(@"js: %@", string);
-//    };
-//    
-   
 }
