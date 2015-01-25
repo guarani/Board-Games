@@ -33,4 +33,20 @@ class PVSBoardGamesTests: XCTestCase {
         }
     }
     
+//    func testSetValidCell() {
+//        let board = PVSBoard(size: 8)
+//        let state :NSInteger = 7
+//        board.setCellAt(column: 4, row: 5, state: 7)
+//        let result: NSInteger = board.valueAt(column:4, row: 5)
+//        XCTAssertEqual(state, result, "Correctly set value.")
+//    }
+//    
+//    func testSetInvalidCell() {
+//        let size = 8
+//        let state = 2
+//        let board = PVSBoard(size: size)
+//        board.setCellAt(column: size, row: 3, state: state)
+//        XCTFail("Correctly unable to set invalid cell.")
+//    }
+    
 }

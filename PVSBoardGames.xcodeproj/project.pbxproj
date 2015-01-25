@@ -14,6 +14,20 @@
 		32675A6E1A708D25009CE460 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32675A6C1A708D25009CE460 /* LaunchScreen.xib */; };
 		32675A7A1A708D25009CE460 /* PVSBoardGamesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32675A791A708D25009CE460 /* PVSBoardGamesTests.swift */; };
 		32675A841A7099A4009CE460 /* PVSMyGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32675A831A7099A4009CE460 /* PVSMyGamesViewController.swift */; };
+		32BA87911A71C9EC00017190 /* PVSGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA87901A71C9EC00017190 /* PVSGameViewController.swift */; };
+		32BA87931A71CC1E00017190 /* PVSBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA87921A71CC1E00017190 /* PVSBoard.swift */; };
+		32BA87961A71DC0B00017190 /* PVSBoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA87951A71DC0B00017190 /* PVSBoardSquare.swift */; };
+		32BA87971A71EDE700017190 /* PVSBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA87921A71CC1E00017190 /* PVSBoard.swift */; };
+		32BA87981A71EDE700017190 /* PVSBoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA87951A71DC0B00017190 /* PVSBoardSquare.swift */; };
+		32D7C51A1A751E39005A056A /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D7C5191A751E39005A056A /* JavaScriptCore.framework */; };
+		32D7C51C1A751E61005A056A /* PVSBoardJSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D7C51B1A751E61005A056A /* PVSBoardJSInterface.swift */; };
+		32D7C51D1A751E61005A056A /* PVSBoardJSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D7C51B1A751E61005A056A /* PVSBoardJSInterface.swift */; };
+		32D7C5201A753BEB005A056A /* game.js in Resources */ = {isa = PBXBuildFile; fileRef = 32D7C51F1A753BEB005A056A /* game.js */; };
+		32D7C5211A753BEB005A056A /* game.js in Resources */ = {isa = PBXBuildFile; fileRef = 32D7C51F1A753BEB005A056A /* game.js */; };
+		32D7C5751A7554CF005A056A /* PVSJSInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D7C5741A7554CF005A056A /* PVSJSInterface.m */; };
+		32D7C5761A7554CF005A056A /* PVSJSInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D7C5741A7554CF005A056A /* PVSJSInterface.m */; };
+		32EDBE541A748FBC007E3DCD /* PVSBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDBE531A748FBC007E3DCD /* PVSBoardView.swift */; };
+		32EDBE551A7490BC007E3DCD /* PVSBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDBE531A748FBC007E3DCD /* PVSBoardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +52,18 @@
 		32675A781A708D25009CE460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32675A791A708D25009CE460 /* PVSBoardGamesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVSBoardGamesTests.swift; sourceTree = "<group>"; };
 		32675A831A7099A4009CE460 /* PVSMyGamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSMyGamesViewController.swift; sourceTree = "<group>"; };
+		32BA87901A71C9EC00017190 /* PVSGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSGameViewController.swift; sourceTree = "<group>"; };
+		32BA87921A71CC1E00017190 /* PVSBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSBoard.swift; sourceTree = "<group>"; };
+		32BA87951A71DC0B00017190 /* PVSBoardSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSBoardSquare.swift; sourceTree = "<group>"; };
+		32D7C5191A751E39005A056A /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		32D7C51B1A751E61005A056A /* PVSBoardJSInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSBoardJSInterface.swift; sourceTree = "<group>"; };
+		32D7C51E1A751F44005A056A /* PVSBoardGames-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PVSBoardGames-Bridging-Header.h"; sourceTree = "<group>"; };
+		32D7C51F1A753BEB005A056A /* game.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = game.js; sourceTree = "<group>"; };
+		32D7C5711A7554CE005A056A /* PVSBoardGames-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PVSBoardGames-Bridging-Header.h"; sourceTree = "<group>"; };
+		32D7C5721A7554CE005A056A /* PVSBoardGamesTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PVSBoardGamesTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		32D7C5731A7554CF005A056A /* PVSJSInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVSJSInterface.h; sourceTree = "<group>"; };
+		32D7C5741A7554CF005A056A /* PVSJSInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVSJSInterface.m; sourceTree = "<group>"; };
+		32EDBE531A748FBC007E3DCD /* PVSBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSBoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32D7C51A1A751E39005A056A /* JavaScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +88,7 @@
 		32675A551A708D25009CE460 = {
 			isa = PBXGroup;
 			children = (
+				32D7C5191A751E39005A056A /* JavaScriptCore.framework */,
 				32675A601A708D25009CE460 /* PVSBoardGames */,
 				32675A761A708D25009CE460 /* PVSBoardGamesTests */,
 				32675A5F1A708D25009CE460 /* Products */,
@@ -79,13 +107,24 @@
 		32675A601A708D25009CE460 /* PVSBoardGames */ = {
 			isa = PBXGroup;
 			children = (
+				32D7C51E1A751F44005A056A /* PVSBoardGames-Bridging-Header.h */,
+				32D7C51F1A753BEB005A056A /* game.js */,
 				32675A631A708D25009CE460 /* AppDelegate.swift */,
 				32675A651A708D25009CE460 /* ViewController.swift */,
 				32675A671A708D25009CE460 /* Main.storyboard */,
 				32675A831A7099A4009CE460 /* PVSMyGamesViewController.swift */,
+				32BA87901A71C9EC00017190 /* PVSGameViewController.swift */,
+				32BA87921A71CC1E00017190 /* PVSBoard.swift */,
+				32EDBE531A748FBC007E3DCD /* PVSBoardView.swift */,
+				32D7C51B1A751E61005A056A /* PVSBoardJSInterface.swift */,
+				32BA87951A71DC0B00017190 /* PVSBoardSquare.swift */,
 				32675A6A1A708D25009CE460 /* Images.xcassets */,
 				32675A6C1A708D25009CE460 /* LaunchScreen.xib */,
 				32675A611A708D25009CE460 /* Supporting Files */,
+				32D7C5731A7554CF005A056A /* PVSJSInterface.h */,
+				32D7C5741A7554CF005A056A /* PVSJSInterface.m */,
+				32D7C5711A7554CE005A056A /* PVSBoardGames-Bridging-Header.h */,
+				32D7C5721A7554CE005A056A /* PVSBoardGamesTests-Bridging-Header.h */,
 			);
 			path = PVSBoardGames;
 			sourceTree = "<group>";
@@ -164,6 +203,7 @@
 				TargetAttributes = {
 					32675A5D1A708D25009CE460 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 6D4PVWMQBC;
 					};
 					32675A721A708D25009CE460 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -195,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32D7C5201A753BEB005A056A /* game.js in Resources */,
 				32675A691A708D25009CE460 /* Main.storyboard in Resources */,
 				32675A6E1A708D25009CE460 /* LaunchScreen.xib in Resources */,
 				32675A6B1A708D25009CE460 /* Images.xcassets in Resources */,
@@ -205,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32D7C5211A753BEB005A056A /* game.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +257,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32EDBE541A748FBC007E3DCD /* PVSBoardView.swift in Sources */,
+				32BA87961A71DC0B00017190 /* PVSBoardSquare.swift in Sources */,
+				32BA87931A71CC1E00017190 /* PVSBoard.swift in Sources */,
+				32D7C51C1A751E61005A056A /* PVSBoardJSInterface.swift in Sources */,
+				32D7C5751A7554CF005A056A /* PVSJSInterface.m in Sources */,
+				32BA87911A71C9EC00017190 /* PVSGameViewController.swift in Sources */,
 				32675A841A7099A4009CE460 /* PVSMyGamesViewController.swift in Sources */,
 				32675A661A708D25009CE460 /* ViewController.swift in Sources */,
 				32675A641A708D25009CE460 /* AppDelegate.swift in Sources */,
@@ -225,6 +273,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32EDBE551A7490BC007E3DCD /* PVSBoardView.swift in Sources */,
+				32BA87971A71EDE700017190 /* PVSBoard.swift in Sources */,
+				32D7C51D1A751E61005A056A /* PVSBoardJSInterface.swift in Sources */,
+				32BA87981A71EDE700017190 /* PVSBoardSquare.swift in Sources */,
+				32D7C5761A7554CF005A056A /* PVSJSInterface.m in Sources */,
 				32675A7A1A708D25009CE460 /* PVSBoardGamesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +350,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "PVSBoardGames/PVSBoardGames-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -333,6 +387,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "PVSBoardGames/PVSBoardGames-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -342,9 +397,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PVSBoardGames/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PVSBoardGames/PVSBoardGames-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -352,9 +411,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PVSBoardGames/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PVSBoardGames/PVSBoardGames-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -362,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -373,6 +436,8 @@
 				INFOPLIST_FILE = PVSBoardGamesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PVSBoardGames/PVSBoardGamesTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PVSBoardGames.app/PVSBoardGames";
 			};
 			name = Debug;
@@ -381,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -388,6 +454,7 @@
 				INFOPLIST_FILE = PVSBoardGamesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PVSBoardGames/PVSBoardGamesTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PVSBoardGames.app/PVSBoardGames";
 			};
 			name = Release;
@@ -411,6 +478,7 @@
 				32675A7F1A708D25009CE460 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		32675A801A708D25009CE460 /* Build configuration list for PBXNativeTarget "PVSBoardGamesTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +487,7 @@
 				32675A821A708D25009CE460 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

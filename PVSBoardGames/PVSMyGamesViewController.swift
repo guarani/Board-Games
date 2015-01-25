@@ -41,6 +41,10 @@ class PVSMyGamesViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("GameViewControllerSegue", sender: self)
+    }
+    
     
 
     /*

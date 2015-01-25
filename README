@@ -101,10 +101,16 @@
         
         
 
-        
+    --- Coding ---
 
-     
+    Using a JSContext, we can execute JavaScript without a UIWebView.
+    Debugging through Safari web inspector works, but the JSContext
+    must be a class variable.
+    Add JavaScriptCore to the frameworks of the project then import
+    these in your Obj-C bridge if you're using Swift:
     
-        
-    
+        #import "JavaScriptCore/JSContext.h"
+        #import "JavaScriptCore/JSExport.h"
+        #import "JavaScriptCore/JSValue.h"
+
 
