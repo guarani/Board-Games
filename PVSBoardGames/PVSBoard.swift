@@ -12,21 +12,21 @@ import JavaScriptCore
 @objc protocol PVSBoardJSExports : JSExport  {
     var boardState: [[Int]] {get set}
     var boardSquares: [[UIView]] {get set}
-    var boardView: UIView? {get set}
+    var boardView: PVSBoardView? {get set}
 
     func createBoardOfSize(size: NSInteger) -> PVSBoard
 }
 
 
-class PVSBoard: NSObject, PVSBoardJSExports {
+class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
     
     dynamic var boardState: [[Int]] = [[]]
     dynamic var boardSquares: [[UIView]] = [[]]
-    dynamic var boardView: UIView?
+    dynamic var boardView: PVSBoardView?
     var containerView: UIView
     var context: JSContext?
     
-    init(createBoardInView view: UIView, withContext: JSContext) {
+    init(createBoardContextInView view: UIView, withContext: JSContext) {
         
         self.containerView = view
         self.context = withContext
@@ -37,8 +37,9 @@ class PVSBoard: NSObject, PVSBoardJSExports {
             let size = options.objectForKeyedSubscript("size").toNumber() as Int
             return self.createBoardOfSize(size)
         }
-//        self.context!.setObject(PVSBoard.self, forKeyedSubscript: "PVSBoard")
-        self.context!.setObject(unsafeBitCast(PVSBoardInterface, AnyObject.self), forKeyedSubscript: "PVSBoard")
+
+        //
+        self.context!.setObject(unsafeBitCast(PVSBoardInterface, AnyObject.self), forKeyedSubscript: "createBoardOfSize")
         
     }
     
@@ -47,6 +48,7 @@ class PVSBoard: NSObject, PVSBoardJSExports {
         self.boardState = Array(count: size, repeatedValue: Array(count: size, repeatedValue: Int()))
         self.boardSquares = Array(count: size, repeatedValue: Array(count: size, repeatedValue: UIView()))
         self.boardView = PVSBoardView()
+        self.boardView!.delegate = self
         self.boardView!.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.containerView.addSubview(self.boardView!)
         self.containerView.addConstraint(NSLayoutConstraint(item: self.boardView!, attribute: .Width, relatedBy: .Equal, toItem: self.containerView, attribute: .Width, multiplier: 1.0, constant: 0))
@@ -55,7 +57,6 @@ class PVSBoard: NSObject, PVSBoardJSExports {
         for row in 0..<size {
             for column in 0..<size {
                 var square = PVSBoardSquare(options: ["column": column, "row": row])
-                
                 
                 if ((row + column) % 2) == 0 {
                     square.backgroundColor = UIColor.blackColor()
@@ -99,6 +100,10 @@ class PVSBoard: NSObject, PVSBoardJSExports {
     func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         var localPosition = touches.anyObject()?.locationInView(self.boardView!)
         println(localPosition)
+    }
+    
+    func squareActivatedAt(column: NSInteger, row: NSInteger) {
+        self.boardState[column][row] = 1
     }
     
     

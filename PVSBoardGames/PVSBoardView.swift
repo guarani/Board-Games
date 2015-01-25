@@ -9,10 +9,12 @@
 import UIKit
 
 protocol PVSBoardViewDelegate {
- 
+    func squareActivatedAt(column: NSInteger, row: NSInteger)
 }
 
 class PVSBoardView: UIView {
+    
+    var delegate: PVSBoardViewDelegate?
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
 //        println("Touches began: \(touches.anyObject()?.locationInView(self))")
@@ -33,7 +35,7 @@ class PVSBoardView: UIView {
             println("square position: \(positionInSquare)")
             if squareView.pointInside(self.convertPoint(localPosition!, toView: squareView), withEvent: event) {
                 squareView.highlight()
-                
+                self.delegate?.squareActivatedAt(squareView.column, row: squareView.row)
             }
         }
 //        println("Touches moved: \(localPosition)")
