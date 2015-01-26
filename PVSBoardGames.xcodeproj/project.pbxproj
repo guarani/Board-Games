@@ -15,6 +15,7 @@
 		32675A7A1A708D25009CE460 /* PVSBoardGamesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32675A791A708D25009CE460 /* PVSBoardGamesTests.swift */; };
 		32675A841A7099A4009CE460 /* PVSMyGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32675A831A7099A4009CE460 /* PVSMyGamesViewController.swift */; };
 		327487921A756DE50072EB60 /* PVSBoardContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327487911A756DE50072EB60 /* PVSBoardContext.swift */; };
+		327487941A75B3E70072EB60 /* PVSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327487931A75B3E70072EB60 /* PVSUtils.swift */; };
 		32BA87911A71C9EC00017190 /* PVSGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA87901A71C9EC00017190 /* PVSGameViewController.swift */; };
 		32BA87931A71CC1E00017190 /* PVSBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA87921A71CC1E00017190 /* PVSBoard.swift */; };
 		32BA87961A71DC0B00017190 /* PVSBoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA87951A71DC0B00017190 /* PVSBoardSquare.swift */; };
@@ -54,6 +55,7 @@
 		32675A791A708D25009CE460 /* PVSBoardGamesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVSBoardGamesTests.swift; sourceTree = "<group>"; };
 		32675A831A7099A4009CE460 /* PVSMyGamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSMyGamesViewController.swift; sourceTree = "<group>"; };
 		327487911A756DE50072EB60 /* PVSBoardContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSBoardContext.swift; sourceTree = "<group>"; };
+		327487931A75B3E70072EB60 /* PVSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSUtils.swift; sourceTree = "<group>"; };
 		32BA87901A71C9EC00017190 /* PVSGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSGameViewController.swift; sourceTree = "<group>"; };
 		32BA87921A71CC1E00017190 /* PVSBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSBoard.swift; sourceTree = "<group>"; };
 		32BA87951A71DC0B00017190 /* PVSBoardSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSBoardSquare.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				32D7C5741A7554CF005A056A /* PVSJSInterface.m */,
 				32D7C5711A7554CE005A056A /* PVSBoardGames-Bridging-Header.h */,
 				32D7C5721A7554CE005A056A /* PVSBoardGamesTests-Bridging-Header.h */,
+				327487931A75B3E70072EB60 /* PVSUtils.swift */,
 			);
 			path = PVSBoardGames;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				327487921A756DE50072EB60 /* PVSBoardContext.swift in Sources */,
 				32BA87931A71CC1E00017190 /* PVSBoard.swift in Sources */,
 				32D7C51C1A751E61005A056A /* PVSBoardJSInterface.swift in Sources */,
+				327487941A75B3E70072EB60 /* PVSUtils.swift in Sources */,
 				32D7C5751A7554CF005A056A /* PVSJSInterface.m in Sources */,
 				32BA87911A71C9EC00017190 /* PVSGameViewController.swift in Sources */,
 				32675A841A7099A4009CE460 /* PVSMyGamesViewController.swift in Sources */,

@@ -32,9 +32,13 @@ class PVSBoardSquare: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func highlight() {
-        self.layer.borderColor = UIColor.brownColor().CGColor
-        self.layer.borderWidth = 3
+    func highlight(isPlayer: Bool) {
+        if (isPlayer == true) {
+            self.layer.borderColor = UIColor.orangeColor().CGColor
+        } else {
+            self.layer.borderColor = UIColor.greenColor().CGColor
+        }
+        self.layer.borderWidth = 5
     }
     
     func unhighlight() {

@@ -20,6 +20,7 @@ class PVSGameViewController: UIViewController {
         // Initialize the board context interface to JavaScript. From now on we sit back and let the
         // JavaScript code make the game.
         var board = PVSBoard(createBoardContextInView:self.view, withContext:context)
+        board.viewController = self
         
         
 //        var console = JSValue(newObjectInContext: context)
