@@ -16,6 +16,8 @@
 		32675A841A7099A4009CE460 /* PVSMyGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32675A831A7099A4009CE460 /* PVSMyGamesViewController.swift */; };
 		327487921A756DE50072EB60 /* PVSBoardContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327487911A756DE50072EB60 /* PVSBoardContext.swift */; };
 		327487941A75B3E70072EB60 /* PVSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327487931A75B3E70072EB60 /* PVSUtils.swift */; };
+		32ABE1A71A7719E200C5DEE4 /* games in Resources */ = {isa = PBXBuildFile; fileRef = 32ABE1A61A7719E200C5DEE4 /* games */; };
+		32ABE1A81A7719E200C5DEE4 /* games in Resources */ = {isa = PBXBuildFile; fileRef = 32ABE1A61A7719E200C5DEE4 /* games */; };
 		32BA87911A71C9EC00017190 /* PVSGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA87901A71C9EC00017190 /* PVSGameViewController.swift */; };
 		32BA87931A71CC1E00017190 /* PVSBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA87921A71CC1E00017190 /* PVSBoard.swift */; };
 		32BA87961A71DC0B00017190 /* PVSBoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA87951A71DC0B00017190 /* PVSBoardSquare.swift */; };
@@ -24,8 +26,6 @@
 		32D7C51A1A751E39005A056A /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D7C5191A751E39005A056A /* JavaScriptCore.framework */; };
 		32D7C51C1A751E61005A056A /* PVSBoardJSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D7C51B1A751E61005A056A /* PVSBoardJSInterface.swift */; };
 		32D7C51D1A751E61005A056A /* PVSBoardJSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D7C51B1A751E61005A056A /* PVSBoardJSInterface.swift */; };
-		32D7C5201A753BEB005A056A /* game.js in Resources */ = {isa = PBXBuildFile; fileRef = 32D7C51F1A753BEB005A056A /* game.js */; };
-		32D7C5211A753BEB005A056A /* game.js in Resources */ = {isa = PBXBuildFile; fileRef = 32D7C51F1A753BEB005A056A /* game.js */; };
 		32D7C5751A7554CF005A056A /* PVSJSInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D7C5741A7554CF005A056A /* PVSJSInterface.m */; };
 		32D7C5761A7554CF005A056A /* PVSJSInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D7C5741A7554CF005A056A /* PVSJSInterface.m */; };
 		32EDBE541A748FBC007E3DCD /* PVSBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDBE531A748FBC007E3DCD /* PVSBoardView.swift */; };
@@ -56,13 +56,13 @@
 		32675A831A7099A4009CE460 /* PVSMyGamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSMyGamesViewController.swift; sourceTree = "<group>"; };
 		327487911A756DE50072EB60 /* PVSBoardContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSBoardContext.swift; sourceTree = "<group>"; };
 		327487931A75B3E70072EB60 /* PVSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSUtils.swift; sourceTree = "<group>"; };
+		32ABE1A61A7719E200C5DEE4 /* games */ = {isa = PBXFileReference; lastKnownFileType = folder; path = games; sourceTree = "<group>"; };
 		32BA87901A71C9EC00017190 /* PVSGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSGameViewController.swift; sourceTree = "<group>"; };
 		32BA87921A71CC1E00017190 /* PVSBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSBoard.swift; sourceTree = "<group>"; };
 		32BA87951A71DC0B00017190 /* PVSBoardSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSBoardSquare.swift; sourceTree = "<group>"; };
 		32D7C5191A751E39005A056A /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		32D7C51B1A751E61005A056A /* PVSBoardJSInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSBoardJSInterface.swift; sourceTree = "<group>"; };
 		32D7C51E1A751F44005A056A /* PVSBoardGames-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PVSBoardGames-Bridging-Header.h"; sourceTree = "<group>"; };
-		32D7C51F1A753BEB005A056A /* game.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = game.js; sourceTree = "<group>"; };
 		32D7C5711A7554CE005A056A /* PVSBoardGames-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PVSBoardGames-Bridging-Header.h"; sourceTree = "<group>"; };
 		32D7C5721A7554CE005A056A /* PVSBoardGamesTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PVSBoardGamesTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		32D7C5731A7554CF005A056A /* PVSJSInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVSJSInterface.h; sourceTree = "<group>"; };
@@ -111,8 +111,8 @@
 		32675A601A708D25009CE460 /* PVSBoardGames */ = {
 			isa = PBXGroup;
 			children = (
+				32ABE1A61A7719E200C5DEE4 /* games */,
 				32D7C51E1A751F44005A056A /* PVSBoardGames-Bridging-Header.h */,
-				32D7C51F1A753BEB005A056A /* game.js */,
 				32675A631A708D25009CE460 /* AppDelegate.swift */,
 				32675A651A708D25009CE460 /* ViewController.swift */,
 				32675A671A708D25009CE460 /* Main.storyboard */,
@@ -241,9 +241,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32D7C5201A753BEB005A056A /* game.js in Resources */,
 				32675A691A708D25009CE460 /* Main.storyboard in Resources */,
 				32675A6E1A708D25009CE460 /* LaunchScreen.xib in Resources */,
+				32ABE1A71A7719E200C5DEE4 /* games in Resources */,
 				32675A6B1A708D25009CE460 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,7 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32D7C5211A753BEB005A056A /* game.js in Resources */,
+				32ABE1A81A7719E200C5DEE4 /* games in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

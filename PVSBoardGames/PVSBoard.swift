@@ -11,20 +11,22 @@ import JavaScriptCore
 import Darwin
 
 
+
+
 @objc protocol PVSBoardJSExports : JSExport  {
     var size: Int {get set}
     var boardState: [[Int]] {get set}
     var boardSquares: [[UIView]] {get set}
     var boardView: PVSBoardView? {get set}
 
-    func createBoardOfSize(size: NSInteger) -> PVSBoard
+    func createBoard(options: Dictionary<NSObject, AnyObject>) -> PVSBoard
     
-    func setSquareAtColumn(column: NSInteger, row: NSInteger, color: Bool)
-    func clearSquareAtColumn(column: NSInteger, row: NSInteger)
+    func setSquareAtColumn(column: Int, row: Int, color: Bool)
+    func clearSquareAtColumn(column: Int, row: Int)
     func clearBoard()
     func cancelMovement()
     func isFull() -> Bool
-    func showPopup(string: NSString)
+    func showPopup(string: String)
 }
 
 
@@ -34,34 +36,40 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
     dynamic var boardSquares: [[UIView]] = [[]]
     dynamic var boardView: PVSBoardView?
     
+    
     var containerView: UIView
     var context: JSContext?
     var viewController: UIViewController?
     
     
-    init(createBoardContextInView view: UIView, withContext: JSContext) {
+    init(createBoardContextInView view: UIView, withContext: JSContext, viewController: UIViewController) {
         
         self.containerView = view
         self.context = withContext
+        self.viewController = viewController
         
         super.init()
         
         var PVSBoardInterface: @objc_block JSValue -> PVSBoard = {options in
-            let size = options.objectForKeyedSubscript("size").toNumber() as Int
-            return self.createBoardOfSize(size)
+            return self.createBoard(options.toDictionary())
         }
 
         //
-        self.context!.setObject(unsafeBitCast(PVSBoardInterface, AnyObject.self), forKeyedSubscript: "createBoardOfSize")
+        self.context!.setObject(unsafeBitCast(PVSBoardInterface, AnyObject.self), forKeyedSubscript: "createBoard")
         
-        let javaScriptPath = NSBundle.mainBundle().pathForResource("game", ofType: "js")
+        let javaScriptPath = NSBundle.mainBundle().pathForResource("games/cram", ofType: "js")
         let javaScriptData = NSData(contentsOfFile: javaScriptPath!)
         let javaScriptString = NSString(data: javaScriptData!, encoding: NSUTF8StringEncoding)
         self.context!.evaluateScript(javaScriptString)
         
     }
     
-    func createBoardOfSize(size: NSInteger) -> PVSBoard {
+    func createBoard(options: Dictionary<NSObject, AnyObject>) -> PVSBoard {
+        var title = options["title"] as String
+        var size = options["size"] as Int
+        var pattern = options["pattern"] as String
+        
+        self.viewController?.title = title
         self.size = size
         self.boardState = Array(count: size, repeatedValue: Array(count: size, repeatedValue: Int()))
         self.boardSquares = Array(count: size, repeatedValue: Array(count: size, repeatedValue: UIView()))
@@ -74,11 +82,7 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
         
         for row in 0..<size {
             for column in 0..<size {
-                var square = PVSBoardSquare(options: ["column": column, "row": row])
-                
-                if ((row + column) % 2) == 0 {
-                    square.backgroundColor = UIColor.blackColor()
-                }
+                var square = PVSBoardSquare(options: ["column": column, "row": row, "pattern": pattern, "boardSize": size])
                 
                 self.boardView!.addSubview(square)
                 boardSquares[column][row] = square
@@ -120,17 +124,17 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
         println(localPosition)
     }
     
-    func squareTouchedAt(column: NSInteger, row: NSInteger) {
+    func squareTouchedAt(column: Int, row: Int) {
         self.context!.objectForKeyedSubscript("board").objectForKeyedSubscript("squareTouchedAt").callWithArguments([column, row])
     }
     
-    func setSquareAtColumn(column: NSInteger, row: NSInteger, color: Bool) {
+    func setSquareAtColumn(column: Int, row: Int, color: Bool) {
         self.boardState[column][row] = 1
         var boardSquareView = self.boardSquares[column][row] as PVSBoardSquare
         boardSquareView.highlight(color)
     }
     
-    func clearSquareAtColumn(column: NSInteger, row: NSInteger) {
+    func clearSquareAtColumn(column: Int, row: Int) {
         self.boardState[column][row] = 0
         var boardSquareView = self.boardSquares[column][row] as PVSBoardSquare
         boardSquareView.unhighlight()
@@ -169,7 +173,7 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
         }
     }
     
-    func showPopup(string: NSString) {
+    func showPopup(string: String) {
         let alert = UIAlertView()
         alert.title = "Game Over!"
         alert.message = string

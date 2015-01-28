@@ -14,13 +14,11 @@ class PVSGameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationController?.navigationBar.translucent = false
         
         // Initialize the board context interface to JavaScript. From now on we sit back and let the
         // JavaScript code make the game.
-        var board = PVSBoard(createBoardContextInView:self.view, withContext:context)
-        board.viewController = self
+        var board = PVSBoard(createBoardContextInView:self.view, withContext:context, viewController: self)
         
         
 //        var console = JSValue(newObjectInContext: context)
@@ -46,12 +44,12 @@ class PVSGameViewController: UIViewController {
     
 //        var PVSBoardInterface: @objc_block JSValue -> PVSBoard =  {options in
 //            let size = options.objectForKeyedSubscript("size").toNumber() as Int
-//            return PVSBoard(createBoardOfSize: size, inView: self.view)
+//            return PVSBoard(createBoard: size, inView: self.view)
 //        }
 //        self.context.setObject(unsafeBitCast(PVSBoardInterface, AnyObject.self), forKeyedSubscript: "PVSBoard")
         
 
-//        var board = PVSBoard(createBoardOfSize: 3, inView: self.view)
+//        var board = PVSBoard(createBoard: 3, inView: self.view)
 
 //        let sayHello: @objc_block JSValue -> Void = { options in
 //            var opts = options.toDictionary()

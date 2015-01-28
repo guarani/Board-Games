@@ -10,22 +10,43 @@ import UIKit
 
 class PVSBoardSquare: UIView {
     
-    var column: NSInteger
-    var row: NSInteger
+    var column: Int
+    var row: Int
+    var boardSize: Int
+    var pattern: String
     var touchDown: Bool
     
     init(options: NSDictionary) {
-        self.column = options["column"] as NSInteger
-        self.row = options["row"] as NSInteger
+        self.column = options["column"] as Int
+        self.row = options["row"] as Int
+        self.boardSize = options["boardSize"] as Int
+        self.pattern = options["pattern"] as String
+        
         self.touchDown = false
         super.init(frame:CGRectZero)
         self.setTranslatesAutoresizingMaskIntoConstraints(false)
-        //00    20    40    60    80
-        //   11    31    51    71
-        //02    22    42    62    82
-//        if row == 1 || column == 1 {
-//            self.backgroundColor = UIColor.redColor()
-//        }
+        self.opaque = false
+        
+        if pattern == "grid" {
+            if row == 1 && column == 1 {
+                let borderWidth = (1 / UIScreen.mainScreen().scale) * 1.0
+                let borderColor = UIColor(red: 30/255.0, green: 144/255.0, blue: 255/255.0, alpha: 1.0).CGColor
+                let topLayer = CALayer()
+                topLayer.borderColor = borderColor
+                topLayer.borderWidth = borderWidth
+                topLayer.frame = CGRectMake(0, 0, 100, borderWidth)
+                self.layer.addSublayer(topLayer)
+                let rightLayer = CALayer()
+                rightLayer.borderColor = borderColor
+                rightLayer.borderWidth = borderWidth
+                rightLayer.frame = CGRectMake(0, 0, 100, borderWidth)
+                self.layer.addSublayer(rightLayer)
+            }
+        } else if pattern == "grid" {
+            if ((row + column) % 2) == 0 {
+                self.backgroundColor = UIColor.blackColor()
+            }
+        }
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -34,16 +55,50 @@ class PVSBoardSquare: UIView {
     
     func highlight(isPlayer: Bool) {
         if (isPlayer == true) {
-            self.layer.borderColor = UIColor.orangeColor().CGColor
+            self.backgroundColor = UIColor(red: 255/255.0, green: 127/255.0, blue: 80/255.0, alpha: 1.0)    // Coral.
         } else {
-            self.layer.borderColor = UIColor.greenColor().CGColor
+            self.backgroundColor = UIColor(red: 102/255.0, green: 205/255.0, blue: 70/255.0, alpha: 1.0)    // MediumAquamarine.
         }
-        self.layer.borderWidth = 5
     }
     
     func unhighlight() {
-        self.layer.borderWidth = 0
+        self.backgroundColor = UIColor.whiteColor()
     }
+    
+    override func drawRect(rect: CGRect) {
+        if pattern == "grid" {
+            var context = UIGraphicsGetCurrentContext()
+            
+            let borderWidth = (1 / UIScreen.mainScreen().scale) * 1.0
+            let borderColor = UIColor(red: 30/255.0, green: 144/255.0, blue: 255/255.0, alpha: 1.0).CGColor
+            
+            
+            // Top border for all squares.
+            CGContextMoveToPoint(context, CGRectGetMinX(rect), CGRectGetMinY(rect))
+            CGContextAddLineToPoint(context, CGRectGetMaxX(rect), CGRectGetMinY(rect))
+            CGContextSetStrokeColorWithColor(context, borderColor)
+            CGContextSetLineWidth(context, borderWidth)
+            CGContextStrokePath(context)
+            
+            // Right border for all squares.
+            CGContextMoveToPoint(context, CGRectGetMaxX(rect), CGRectGetMinY(rect))
+            CGContextAddLineToPoint(context, CGRectGetMaxX(rect), CGRectGetMaxY(rect))
+            CGContextSetStrokeColorWithColor(context, borderColor)
+            CGContextSetLineWidth(context, borderWidth)
+            CGContextStrokePath(context)
+            
+            // A bottom border for all the squares in the last row.
+            if row == boardSize - 1 {
+                CGContextMoveToPoint(context, CGRectGetMinX(rect), CGRectGetMaxY(rect))
+                CGContextAddLineToPoint(context, CGRectGetMaxX(rect), CGRectGetMaxY(rect))
+                CGContextSetStrokeColorWithColor(context, borderColor)
+                CGContextSetLineWidth(context, borderWidth)
+                CGContextStrokePath(context)
+            }
+        }
+    }
+    
+
 
 
 //    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {

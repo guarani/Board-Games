@@ -1,5 +1,9 @@
 
-var board = createBoardOfSize({size:6})
+var board = createBoard({
+    title       : 'Cram',        
+    size        : 7,
+    pattern     : 'grid',
+})
 
 var lastTouch = {}
 var isPlayer1Turn = true
