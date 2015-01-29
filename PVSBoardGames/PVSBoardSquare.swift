@@ -12,41 +12,22 @@ class PVSBoardSquare: UIView {
     
     var column: Int
     var row: Int
-    var boardSize: Int
+    var columns: Int
+    var rows: Int
     var pattern: String
     var touchDown: Bool
     
     init(options: NSDictionary) {
         self.column = options["column"] as Int
         self.row = options["row"] as Int
-        self.boardSize = options["boardSize"] as Int
+        self.columns = options["columns"] as Int
+        self.rows = options["rows"] as Int
         self.pattern = options["pattern"] as String
         
         self.touchDown = false
         super.init(frame:CGRectZero)
         self.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.opaque = false
-        
-        if pattern == "grid" {
-            if row == 1 && column == 1 {
-                let borderWidth = (1 / UIScreen.mainScreen().scale) * 1.0
-                let borderColor = UIColor(red: 30/255.0, green: 144/255.0, blue: 255/255.0, alpha: 1.0).CGColor
-                let topLayer = CALayer()
-                topLayer.borderColor = borderColor
-                topLayer.borderWidth = borderWidth
-                topLayer.frame = CGRectMake(0, 0, 100, borderWidth)
-                self.layer.addSublayer(topLayer)
-                let rightLayer = CALayer()
-                rightLayer.borderColor = borderColor
-                rightLayer.borderWidth = borderWidth
-                rightLayer.frame = CGRectMake(0, 0, 100, borderWidth)
-                self.layer.addSublayer(rightLayer)
-            }
-        } else if pattern == "grid" {
-            if ((row + column) % 2) == 0 {
-                self.backgroundColor = UIColor.blackColor()
-            }
-        }
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -88,14 +69,19 @@ class PVSBoardSquare: UIView {
             CGContextStrokePath(context)
             
             // A bottom border for all the squares in the last row.
-            if row == boardSize - 1 {
+            if row == rows - 1 {
                 CGContextMoveToPoint(context, CGRectGetMinX(rect), CGRectGetMaxY(rect))
                 CGContextAddLineToPoint(context, CGRectGetMaxX(rect), CGRectGetMaxY(rect))
                 CGContextSetStrokeColorWithColor(context, borderColor)
                 CGContextSetLineWidth(context, borderWidth)
                 CGContextStrokePath(context)
             }
+        } else if pattern == "grid" {
+            if ((row + column) % 2) == 0 {
+                self.backgroundColor = UIColor.blackColor()
+            }
         }
+        
     }
     
 

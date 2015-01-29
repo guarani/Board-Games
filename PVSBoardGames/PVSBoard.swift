@@ -14,7 +14,8 @@ import Darwin
 
 
 @objc protocol PVSBoardJSExports : JSExport  {
-    var size: Int {get set}
+    var columns: Int {get set}
+    var rows: Int {get set}
     var boardState: [[Int]] {get set}
     var boardSquares: [[UIView]] {get set}
     var boardView: PVSBoardView? {get set}
@@ -31,7 +32,8 @@ import Darwin
 
 
 class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
-    dynamic var size: Int = 0
+    dynamic var columns: Int = 0
+    dynamic var rows: Int = 0
     dynamic var boardState: [[Int]] = [[]]
     dynamic var boardSquares: [[UIView]] = [[]]
     dynamic var boardView: PVSBoardView?
@@ -57,6 +59,7 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
         //
         self.context!.setObject(unsafeBitCast(PVSBoardInterface, AnyObject.self), forKeyedSubscript: "createBoard")
         
+        // Open the game.
         let javaScriptPath = NSBundle.mainBundle().pathForResource("games/cram", ofType: "js")
         let javaScriptData = NSData(contentsOfFile: javaScriptPath!)
         let javaScriptString = NSString(data: javaScriptData!, encoding: NSUTF8StringEncoding)
@@ -66,30 +69,32 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
     
     func createBoard(options: Dictionary<NSObject, AnyObject>) -> PVSBoard {
         var title = options["title"] as String
-        var size = options["size"] as Int
+        var columns = options["columns"] as Int
+        var rows = options["rows"] as Int
         var pattern = options["pattern"] as String
         
         self.viewController?.title = title
-        self.size = size
-        self.boardState = Array(count: size, repeatedValue: Array(count: size, repeatedValue: Int()))
-        self.boardSquares = Array(count: size, repeatedValue: Array(count: size, repeatedValue: UIView()))
+        self.columns = columns
+        self.rows = rows
+        self.boardState = Array(count: columns, repeatedValue: Array(count: rows, repeatedValue: Int()))
+        self.boardSquares = Array(count: columns, repeatedValue: Array(count: rows, repeatedValue: UIView()))
         self.boardView = PVSBoardView()
         self.boardView!.delegate = self
         self.boardView!.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.containerView.addSubview(self.boardView!)
         self.containerView.addConstraint(NSLayoutConstraint(item: self.boardView!, attribute: .Width, relatedBy: .Equal, toItem: self.containerView, attribute: .Width, multiplier: 1.0, constant: 0))
-        self.containerView.addConstraint(NSLayoutConstraint(item: self.boardView!, attribute: .Height, relatedBy: .Equal, toItem: self.boardView!, attribute: .Width, multiplier: 1.0, constant: 0))
+        self.containerView.addConstraint(NSLayoutConstraint(item: self.boardView!, attribute: .Height, relatedBy: .Equal, toItem: self.boardView!, attribute: .Width, multiplier: CGFloat(CGFloat(self.rows) / CGFloat(self.columns)), constant: 0))
         
-        for row in 0..<size {
-            for column in 0..<size {
-                var square = PVSBoardSquare(options: ["column": column, "row": row, "pattern": pattern, "boardSize": size])
+        for row in 0..<self.rows {
+            for column in 0..<self.columns {
+                var square = PVSBoardSquare(options: ["column": column, "row": row, "pattern": pattern, "columns": self.columns, "rows": self.rows])
                 
                 self.boardView!.addSubview(square)
                 boardSquares[column][row] = square
                 
                 if column == 0 {
                     self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("H:|[square]", options: .allZeros, metrics: nil, views: ["square": square]))
-                } else if column < size - 1 {
+                } else if column < self.columns - 1 {
                     var leftSquare = boardSquares[column - 1][row]
                     self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("H:[leftSquare][square]", options: .allZeros, metrics: nil, views: ["leftSquare": leftSquare, "square": square]))
                     self.boardView!.addConstraint(NSLayoutConstraint(item: leftSquare, attribute: .Width, relatedBy: .Equal, toItem: square, attribute: .Width, multiplier: 1.0, constant: 0))
@@ -101,7 +106,7 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
                 
                 if row == 0 {
                     self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("V:|[square]", options: .allZeros, metrics: nil, views: ["square": square]))
-                } else if row < size - 1 {
+                } else if row < self.rows - 1 {
                     var aboveSquare = boardSquares[column][row - 1]
                     self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("V:[aboveSquare][square]", options: .allZeros, metrics: nil, views: ["aboveSquare": aboveSquare, "square": square]))
                     self.boardView!.addConstraint(NSLayoutConstraint(item: aboveSquare, attribute: .Height, relatedBy: .Equal, toItem: square, attribute: .Height, multiplier: 1.0, constant: 0))
@@ -142,9 +147,9 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
     
     func clearBoard() {
         self.boardState = [[]]
-        self.boardState = Array(count: self.size, repeatedValue: Array(count: self.size, repeatedValue: Int()))
-        for row in 0..<self.size {
-            for column in 0..<size {
+        self.boardState = Array(count: self.columns, repeatedValue: Array(count: self.rows, repeatedValue: Int()))
+        for row in 0..<self.columns {
+            for column in 0..<self.rows {
                 var boardSquare = self.boardSquares[row][column] as PVSBoardSquare
                 boardSquare.unhighlight()
                 
@@ -158,15 +163,15 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
     
     func isFull() -> Bool {
         var fullSquares = 0
-        for row in 0..<self.size {
-            for column in 0..<size {
+        for row in 0..<self.columns {
+            for column in 0..<self.rows {
                 var state = self.boardState[column][row] as Int
                 if state == 1 {
                     fullSquares++
                 }
             }
         }
-        if fullSquares == (size * size) {
+        if fullSquares == (self.columns * self.rows) {
             return true
         } else {
             return false

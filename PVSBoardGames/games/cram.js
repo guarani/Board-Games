@@ -1,7 +1,8 @@
 
 var board = createBoard({
     title       : 'Cram',        
-    size        : 7,
+    rows        : 6,
+    columns     : 10,
     pattern     : 'grid',
 })
 
@@ -15,7 +16,7 @@ board.squareTouchedAt = function(column, row) {
         board.setSquareAtColumnRowColor(column, row, isPlayer1Turn)
         lastTouch = {}
         board.cancelMovement()
-        if (board.isFull()) {
+        if (isEndGame() ) {
             var playerMsg = isPlayer1Turn ? "First player won!" : "Second player won!";
             board.showPopup(playerMsg)
         }
@@ -39,6 +40,25 @@ function areOrthogonallyAdjacent(point1, point2) {
         } else {
             return false
         }
+}
+
+function isEndGame() {
+    for (var column = 0; column < board.columns; column++) {
+        for (var row = 0; row < board.rows; row++) {
+            
+            // If this square is full, skip to the next square and keep searching.
+            if (board.boardState[column][row]) continue;
+            
+            // Check the four orthogonally adjacent cells.
+            if (row                  && board.boardState[column][row - 1] === 0) return false;   // Top.
+            if (column < column - 1  && board.boardState[column + 1][row] === 0) return false;   // Right.
+            if (row < row - 1        && board.boardState[column][row + 1] === 0) return false;   // Bottom.
+            if (column               && board.boardState[column - 1][row] === 0) return false;   // Left.
+        }
+    }
+    
+    // No two orthogonally adjacent cells found, end of game.
+    return true;
 }
 
 function areEmpty(point1, point2) {
