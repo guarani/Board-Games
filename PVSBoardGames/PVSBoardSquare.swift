@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol PVSBoardSquareDelegate {
+    func squareClickedAt(column: NSInteger, row: NSInteger)
+}
+
+
 class PVSBoardSquare: UIView {
     
+    var delegate: PVSBoardSquareDelegate?
     var column: Int
     var row: Int
     var columns: Int
@@ -23,11 +29,14 @@ class PVSBoardSquare: UIView {
         self.columns = options["columns"] as Int
         self.rows = options["rows"] as Int
         self.pattern = options["pattern"] as String
-        
         self.touchDown = false
+        
         super.init(frame:CGRectZero)
+
         self.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.opaque = false
+        
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("handleTap:")))
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -81,38 +90,9 @@ class PVSBoardSquare: UIView {
                 self.backgroundColor = UIColor.blackColor()
             }
         }
-        
     }
     
-
-
-
-//    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-//        self.touchDown = true
-//        self.layer.borderColor = UIColor.brownColor().CGColor
-//        self.layer.borderWidth = 3
-//    }
-//    
-//    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-//        if self.touchDown == true {
-//            self.touchDown = false
-//            self.layer.borderWidth = 0
-//        }
-//    }
-//    
-//    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-//        
-////        var localPosition = touches.anyObject()?.locationInView(self)
-////        println("C: \(self.column) R: \(self.row) --- \(localPosition)")
-////        if localPosition?.x > self.frame.width {
-////            self.superview?.hitTes, withEvent: <#UIEvent?#>
-////        }
-//    }
-//    
-//    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-//        println("OUTSIDE")
-//        
-//        return super.hitTest(point, withEvent: event)
-//    }
-
+    func handleTap(tap: UITapGestureRecognizer) {
+        self.delegate?.squareClickedAt(self.column, row: self.row)
+    }
 }

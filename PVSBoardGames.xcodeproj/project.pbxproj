@@ -406,10 +406,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: paul von schrottky (WJZ4F574KC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: paul von schrottky (WJZ4F574KC)";
 				INFOPLIST_FILE = PVSBoardGames/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "86f41a8c-56be-4cad-9eec-8061cb08c2cb";
 				SWIFT_OBJC_BRIDGING_HEADER = "PVSBoardGames/PVSBoardGames-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -420,10 +422,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: paul von schrottky (WJZ4F574KC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: paul von schrottky (WJZ4F574KC)";
 				INFOPLIST_FILE = PVSBoardGames/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "86f41a8c-56be-4cad-9eec-8061cb08c2cb";
 				SWIFT_OBJC_BRIDGING_HEADER = "PVSBoardGames/PVSBoardGames-Bridging-Header.h";
 			};
 			name = Release;

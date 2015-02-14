@@ -16,6 +16,8 @@ class PVSBoardView: UIView {
     
     var delegate: PVSBoardViewDelegate?
     var touchDown: Bool = false
+    
+    
 
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -36,7 +38,7 @@ class PVSBoardView: UIView {
                 var squareView = square as PVSBoardSquare
                 var positionInSquare = self.convertPoint(localPosition!, toView: squareView)
                 println("square position: \(positionInSquare)")
-                if squareView.pointInside(self.convertPoint(localPosition!, toView: squareView), withEvent: event) {
+                if squareView.pointInside(positionInSquare, withEvent: event) {
                     self.delegate?.squareTouchedAt(squareView.column, row: squareView.row)
                 }
             }

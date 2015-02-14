@@ -21,17 +21,20 @@ import Darwin
     var boardView: PVSBoardView? {get set}
 
     func createBoard(options: Dictionary<NSObject, AnyObject>) -> PVSBoard
+    func showPopup(string: String)
+    
     
     func setSquareAtColumn(column: Int, row: Int, color: Bool)
     func clearSquareAtColumn(column: Int, row: Int)
     func clearBoard()
     func cancelMovement()
     func isFull() -> Bool
-    func showPopup(string: String)
+
 }
 
 
-class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
+class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate, PVSBoardSquareDelegate {
+    var gameName: String
     dynamic var columns: Int = 0
     dynamic var rows: Int = 0
     dynamic var boardState: [[Int]] = [[]]
@@ -44,9 +47,10 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
     var viewController: UIViewController?
     
     
-    init(createBoardContextInView view: UIView, withContext: JSContext, viewController: UIViewController) {
+    init(createBoardGame: String, inView: UIView, withContext: JSContext, viewController: UIViewController) {
         
-        self.containerView = view
+        self.gameName = createBoardGame
+        self.containerView = inView
         self.context = withContext
         self.viewController = viewController
         
@@ -60,7 +64,7 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
         self.context!.setObject(unsafeBitCast(PVSBoardInterface, AnyObject.self), forKeyedSubscript: "createBoard")
         
         // Open the game.
-        let javaScriptPath = NSBundle.mainBundle().pathForResource("games/cram", ofType: "js")
+        let javaScriptPath = NSBundle.mainBundle().pathForResource("games/\(gameName)/game", ofType: "js")
         let javaScriptData = NSData(contentsOfFile: javaScriptPath!)
         let javaScriptString = NSString(data: javaScriptData!, encoding: NSUTF8StringEncoding)
         self.context!.evaluateScript(javaScriptString)
@@ -88,6 +92,7 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
         for row in 0..<self.rows {
             for column in 0..<self.columns {
                 var square = PVSBoardSquare(options: ["column": column, "row": row, "pattern": pattern, "columns": self.columns, "rows": self.rows])
+                square.delegate = self
                 
                 self.boardView!.addSubview(square)
                 boardSquares[column][row] = square
@@ -186,4 +191,7 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate {
         alert.show()
     }
     
+    func squareClickedAt(column: NSInteger, row: NSInteger) {
+        self.context!.objectForKeyedSubscript("board").objectForKeyedSubscript("squareClickedAt").callWithArguments([column, row])
+    }
 }

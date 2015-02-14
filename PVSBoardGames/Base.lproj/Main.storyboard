@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xf0-sW-Szk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Qti-3V-RdF">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -14,11 +14,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Uhs-ri-nTC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="RII-DN-6Ix">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Vnb-CM-Zfw">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="CJg-Y6-nKG" id="iL3-He-tTw"/>
@@ -28,16 +28,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Vnb-CM-Zfw" firstAttribute="leading" secondItem="RII-DN-6Ix" secondAttribute="leadingMargin" constant="-16" id="0OI-Q0-RAL"/>
-                            <constraint firstItem="Vnb-CM-Zfw" firstAttribute="top" secondItem="1pF-xk-P6f" secondAttribute="bottom" id="KJV-j3-DDe"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Vnb-CM-Zfw" secondAttribute="trailing" constant="-16" id="dJ4-EZ-jr8"/>
-                            <constraint firstItem="Uhs-ri-nTC" firstAttribute="top" secondItem="Vnb-CM-Zfw" secondAttribute="bottom" id="mKY-a0-ABh"/>
+                            <constraint firstItem="Vnb-CM-Zfw" firstAttribute="top" secondItem="1pF-xk-P6f" secondAttribute="bottom" constant="-64" id="EDi-3U-iMy"/>
+                            <constraint firstItem="Vnb-CM-Zfw" firstAttribute="leading" secondItem="RII-DN-6Ix" secondAttribute="leadingMargin" constant="-16" id="KsH-Wo-EQU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vnb-CM-Zfw" secondAttribute="trailing" constant="-16" id="QCG-sL-BKD"/>
+                            <constraint firstItem="Uhs-ri-nTC" firstAttribute="top" secondItem="Vnb-CM-Zfw" secondAttribute="bottom" id="gNa-ag-k8D"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="My Games" id="NLx-Vt-CTp"/>
                     <connections>
                         <outlet property="tableView" destination="Vnb-CM-Zfw" id="q41-3o-jqt"/>
+                        <segue destination="xf0-sW-Szk" kind="show" identifier="GameViewControllerSegue" id="TAx-a0-k4p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nD6-aL-chL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -55,7 +55,18 @@
                     <view key="view" contentMode="scaleToFill" id="bOg-Yx-n9N">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pZ0-nn-g9s">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bve-vd-bfN" firstAttribute="top" secondItem="pZ0-nn-g9s" secondAttribute="bottom" id="1Ya-tX-zy4"/>
+                            <constraint firstItem="pZ0-nn-g9s" firstAttribute="leading" secondItem="bOg-Yx-n9N" secondAttribute="leadingMargin" constant="-16" id="DQL-42-mKx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pZ0-nn-g9s" secondAttribute="trailing" constant="-16" id="Qfq-a9-sqM"/>
+                            <constraint firstItem="pZ0-nn-g9s" firstAttribute="top" secondItem="t4z-0D-ZSf" secondAttribute="bottom" constant="-20" id="t4g-kC-Ctp"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Sjm-md-pbC"/>
                 </viewController>
@@ -178,7 +189,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="xNu-iQ-VBg" kind="relationship" relationship="rootViewController" id="QWw-DI-zHr"/>
+                        <segue destination="xNu-iQ-VBg" kind="relationship" relationship="rootViewController" id="k0I-vg-Gg1"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctY-4j-t35" userLabel="First Responder" sceneMemberID="firstResponder"/>
