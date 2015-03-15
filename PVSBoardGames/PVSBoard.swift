@@ -22,14 +22,11 @@ import Darwin
 
     func createBoard(options: Dictionary<NSObject, AnyObject>) -> PVSBoard
     func showPopup(string: String)
-    
+    func cancelMovement()
     
     func setSquareAtColumn(column: Int, row: Int, color: Bool)
     func clearSquareAtColumn(column: Int, row: Int)
     func clearBoard()
-    func cancelMovement()
-    func isFull() -> Bool
-
 }
 
 
@@ -40,7 +37,6 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate, PVSBoardSquar
     dynamic var boardState: [[Int]] = [[]]
     dynamic var boardSquares: [[UIView]] = [[]]
     dynamic var boardView: PVSBoardView?
-    
     
     var containerView: UIView
     var context: JSContext?
@@ -120,44 +116,34 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate, PVSBoardSquar
                     self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("V:[aboveSquare][square]|", options: .allZeros, metrics: nil, views: ["aboveSquare": aboveSquare, "square": square]))
                     self.boardView!.addConstraint(NSLayoutConstraint(item: aboveSquare, attribute: .Height, relatedBy: .Equal, toItem: square, attribute: .Height, multiplier: 1.0, constant: 0))
                 }
-                
-                
-                
             }
         }
         
         return self
     }
-
-    func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        var localPosition = touches.anyObject()?.locationInView(self.boardView!)
-        println(localPosition)
-    }
     
     func squareTouchedAt(column: Int, row: Int) {
-        self.context!.objectForKeyedSubscript("board").objectForKeyedSubscript("squareTouchedAt").callWithArguments([column, row])
+        let squareTouchedAtFunction = self.context!.objectForKeyedSubscript("board").objectForKeyedSubscript("squareTouchedAt")
+        if !squareTouchedAtFunction.isUndefined() {
+            squareTouchedAtFunction.callWithArguments([column, row])
+        }
     }
     
     func setSquareAtColumn(column: Int, row: Int, color: Bool) {
-        self.boardState[column][row] = 1
         var boardSquareView = self.boardSquares[column][row] as PVSBoardSquare
         boardSquareView.highlight(color)
     }
     
     func clearSquareAtColumn(column: Int, row: Int) {
-        self.boardState[column][row] = 0
         var boardSquareView = self.boardSquares[column][row] as PVSBoardSquare
         boardSquareView.unhighlight()
     }
     
     func clearBoard() {
-        self.boardState = [[]]
-        self.boardState = Array(count: self.columns, repeatedValue: Array(count: self.rows, repeatedValue: Int()))
         for row in 0..<self.columns {
             for column in 0..<self.rows {
                 var boardSquare = self.boardSquares[row][column] as PVSBoardSquare
                 boardSquare.unhighlight()
-                
             }
         }
     }
@@ -166,22 +152,22 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate, PVSBoardSquar
         self.boardView!.touchDown = false
     }
     
-    func isFull() -> Bool {
-        var fullSquares = 0
-        for row in 0..<self.columns {
-            for column in 0..<self.rows {
-                var state = self.boardState[column][row] as Int
-                if state == 1 {
-                    fullSquares++
-                }
-            }
-        }
-        if fullSquares == (self.columns * self.rows) {
-            return true
-        } else {
-            return false
-        }
-    }
+//    func isFull() -> Bool {
+//        var fullSquares = 0
+//        for row in 0..<self.columns {
+//            for column in 0..<self.rows {
+//                var state = self.boardState[column][row] as Int
+//                if state == 1 {
+//                    fullSquares++
+//                }
+//            }
+//        }
+//        if fullSquares == (self.columns * self.rows) {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
     
     func showPopup(string: String) {
         let alert = UIAlertView()
@@ -190,8 +176,18 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate, PVSBoardSquar
         alert.addButtonWithTitle("Ok")
         alert.show()
     }
+
     
     func squareClickedAt(column: NSInteger, row: NSInteger) {
-        self.context!.objectForKeyedSubscript("board").objectForKeyedSubscript("squareClickedAt").callWithArguments([column, row])
+        let squareClickedAtFunction = self.context!.objectForKeyedSubscript("board").objectForKeyedSubscript("squareClickedAt")
+        if !squareClickedAtFunction.isUndefined() {
+            squareClickedAtFunction.callWithArguments([column, row])
+        }
+    }
+    
+
+    func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        var localPosition = touches.anyObject()?.locationInView(self.boardView!)
+        println(localPosition)
     }
 }
