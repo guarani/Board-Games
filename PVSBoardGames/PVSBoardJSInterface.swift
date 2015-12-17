@@ -25,6 +25,6 @@ class PVSBoardJSInterface: NSObject {
         let javaScriptPath = NSBundle.mainBundle().pathForResource("game", ofType: "js")
         let javaScriptData = NSData(contentsOfFile: javaScriptPath!)
         let javaScriptString = NSString(data: javaScriptData!, encoding: NSUTF8StringEncoding)
-        context.evaluateScript(javaScriptString)
+        context.evaluateScript(javaScriptString! as String)
     }
 }

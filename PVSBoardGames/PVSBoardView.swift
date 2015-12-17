@@ -19,24 +19,23 @@ class PVSBoardView: UIView {
     
     
 
-    
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.touchDown = true
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.touchDown = false
-
     }
     
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        var localPosition = touches.anyObject()?.locationInView(self)
+    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        var localPosition = (touches.first as! UITouch).locationInView(self)
         println("board position: \(localPosition)")
         
         if (self.touchDown == true) {
             for square in self.subviews {
-                var squareView = square as PVSBoardSquare
-                var positionInSquare = self.convertPoint(localPosition!, toView: squareView)
+                var squareView = square as! PVSBoardSquare
+                var positionInSquare = self.convertPoint(localPosition, toView: squareView)
                 println("square position: \(positionInSquare)")
                 if squareView.pointInside(positionInSquare, withEvent: event) {
                     self.delegate?.squareTouchedAt(squareView.column, row: squareView.row)

@@ -63,15 +63,14 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate, PVSBoardSquar
         let javaScriptPath = NSBundle.mainBundle().pathForResource("games/\(gameName)/game", ofType: "js")
         let javaScriptData = NSData(contentsOfFile: javaScriptPath!)
         let javaScriptString = NSString(data: javaScriptData!, encoding: NSUTF8StringEncoding)
-        self.context!.evaluateScript(javaScriptString)
-        
+        self.context!.evaluateScript(javaScriptString as! String)
     }
     
     func createBoard(options: Dictionary<NSObject, AnyObject>) -> PVSBoard {
-        var title = options["title"] as String
-        var columns = options["columns"] as Int
-        var rows = options["rows"] as Int
-        var pattern = options["pattern"] as String
+        var title = options["title"] as! String
+        var columns = options["columns"] as! Int
+        var rows = options["rows"] as! Int
+        var pattern = options["pattern"] as! String
         
         self.viewController?.title = title
         self.columns = columns
@@ -130,19 +129,19 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate, PVSBoardSquar
     }
     
     func setSquareAtColumn(column: Int, row: Int, color: Bool) {
-        var boardSquareView = self.boardSquares[column][row] as PVSBoardSquare
+        var boardSquareView = self.boardSquares[column][row] as! PVSBoardSquare
         boardSquareView.highlight(color)
     }
     
     func clearSquareAtColumn(column: Int, row: Int) {
-        var boardSquareView = self.boardSquares[column][row] as PVSBoardSquare
+        var boardSquareView = self.boardSquares[column][row] as! PVSBoardSquare
         boardSquareView.unhighlight()
     }
     
     func clearBoard() {
         for row in 0..<self.columns {
             for column in 0..<self.rows {
-                var boardSquare = self.boardSquares[row][column] as PVSBoardSquare
+                var boardSquare = self.boardSquares[row][column] as! PVSBoardSquare
                 boardSquare.unhighlight()
             }
         }

@@ -1,3 +1,4 @@
+
 //
 //  PVSBoardSquare.swift
 //  PVSBoardGames
@@ -24,11 +25,11 @@ class PVSBoardSquare: UIView {
     var touchDown: Bool
     
     init(options: NSDictionary) {
-        self.column = options["column"] as Int
-        self.row = options["row"] as Int
-        self.columns = options["columns"] as Int
-        self.rows = options["rows"] as Int
-        self.pattern = options["pattern"] as String
+        self.column = options["column"] as! Int
+        self.row = options["row"] as! Int
+        self.columns = options["columns"] as! Int
+        self.rows = options["rows"] as! Int
+        self.pattern = options["pattern"] as! String
         self.touchDown = false
         
         super.init(frame:CGRectZero)

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D34923AF-0BC9-4BB6-B5CC-5F29F406A2A7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PVSBoardGames</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B4ED30220924D84A0453037CB2555580F6AFEFFA</key>
+		<string>https://github.com/guarani/Board-Games.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PVSBoardGames.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B4ED30220924D84A0453037CB2555580F6AFEFFA</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/guarani/Board-Games.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B4ED30220924D84A0453037CB2555580F6AFEFFA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B4ED30220924D84A0453037CB2555580F6AFEFFA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PVSBoardGames</string>
+		</dict>
+	</array>
+</dict>
+</plist>

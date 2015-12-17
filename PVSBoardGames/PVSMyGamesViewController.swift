@@ -46,21 +46,21 @@ class PVSMyGamesViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        var game: NSDictionary = self.myGames[indexPath.row] as NSDictionary
-        cell.textLabel?.text = game["title"] as NSString
+        var game: NSDictionary = self.myGames[indexPath.row] as! NSDictionary
+        cell.textLabel?.text = game["title"] as! String
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedGame = myGames[indexPath.row]["directory"] as String
+        selectedGame = myGames[indexPath.row]["directory"] as! String
         self.performSegueWithIdentifier("GameViewControllerSegue", sender: self)
     }
     
     
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var naviagtionController = segue.destinationViewController as UINavigationController
-        var nextScreen = naviagtionController.viewControllers[0] as PVSGameViewController
+        var naviagtionController = segue.destinationViewController as! UINavigationController
+        var nextScreen = naviagtionController.viewControllers[0] as! PVSGameViewController
         nextScreen.gameName = selectedGame
         
         // Get the new view controller using segue.destinationViewController.
