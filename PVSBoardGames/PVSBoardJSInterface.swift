@@ -18,7 +18,7 @@ class PVSBoardJSInterface: NSObject {
         
         var block: @objc_block (NSString!) -> Void = {
             (string: NSString!) -> Void in
-            println(string)
+            print(string)
         }
         console.setObject(unsafeBitCast(block, AnyObject.self), forKeyedSubscript: "console")
         

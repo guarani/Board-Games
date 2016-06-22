@@ -23,7 +23,7 @@ class PVSBoardContext: NSObject, PVSBoardContextJSExport {
         self.context = jsContext
         
         self.context!.exceptionHandler = {ctx, exception in
-            println("JS Error: \(exception)")
+            print("JS Error: \(exception)")
         }
 
         self.context!.setObject(PVSBoardContext.self, forKeyedSubscript: "PVSBoardContext")

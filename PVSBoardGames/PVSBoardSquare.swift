@@ -34,7 +34,7 @@ class PVSBoardSquare: UIView {
         
         super.init(frame:CGRectZero)
 
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.opaque = false
         
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("handleTap:")))

@@ -79,7 +79,7 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate, PVSBoardSquar
         self.boardSquares = Array(count: columns, repeatedValue: Array(count: rows, repeatedValue: UIView()))
         self.boardView = PVSBoardView()
         self.boardView!.delegate = self
-        self.boardView!.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.boardView!.translatesAutoresizingMaskIntoConstraints = false
         self.containerView.addSubview(self.boardView!)
         self.containerView.addConstraint(NSLayoutConstraint(item: self.boardView!, attribute: .Width, relatedBy: .Equal, toItem: self.containerView, attribute: .Width, multiplier: 1.0, constant: 0))
         self.containerView.addConstraint(NSLayoutConstraint(item: self.boardView!, attribute: .Height, relatedBy: .Equal, toItem: self.boardView!, attribute: .Width, multiplier: CGFloat(CGFloat(self.rows) / CGFloat(self.columns)), constant: 0))
@@ -93,26 +93,26 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate, PVSBoardSquar
                 boardSquares[column][row] = square
                 
                 if column == 0 {
-                    self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("H:|[square]", options: .allZeros, metrics: nil, views: ["square": square]))
+                    self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("H:|[square]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["square": square]))
                 } else if column < self.columns - 1 {
                     var leftSquare = boardSquares[column - 1][row]
-                    self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("H:[leftSquare][square]", options: .allZeros, metrics: nil, views: ["leftSquare": leftSquare, "square": square]))
+                    self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("H:[leftSquare][square]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["leftSquare": leftSquare, "square": square]))
                     self.boardView!.addConstraint(NSLayoutConstraint(item: leftSquare, attribute: .Width, relatedBy: .Equal, toItem: square, attribute: .Width, multiplier: 1.0, constant: 0))
                 } else {
                     var leftSquare = boardSquares[column - 1][row]
-                    self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("H:[leftSquare][square]|", options: .allZeros, metrics: nil, views: ["leftSquare": leftSquare, "square": square]))
+                    self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("H:[leftSquare][square]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["leftSquare": leftSquare, "square": square]))
                     self.boardView!.addConstraint(NSLayoutConstraint(item: leftSquare, attribute: .Width, relatedBy: .Equal, toItem: square, attribute: .Width, multiplier: 1.0, constant: 0))
                 }
                 
                 if row == 0 {
-                    self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("V:|[square]", options: .allZeros, metrics: nil, views: ["square": square]))
+                    self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("V:|[square]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["square": square]))
                 } else if row < self.rows - 1 {
                     var aboveSquare = boardSquares[column][row - 1]
-                    self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("V:[aboveSquare][square]", options: .allZeros, metrics: nil, views: ["aboveSquare": aboveSquare, "square": square]))
+                    self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("V:[aboveSquare][square]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["aboveSquare": aboveSquare, "square": square]))
                     self.boardView!.addConstraint(NSLayoutConstraint(item: aboveSquare, attribute: .Height, relatedBy: .Equal, toItem: square, attribute: .Height, multiplier: 1.0, constant: 0))
                 } else {
                     var aboveSquare = boardSquares[column][row - 1]
-                    self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("V:[aboveSquare][square]|", options: .allZeros, metrics: nil, views: ["aboveSquare": aboveSquare, "square": square]))
+                    self.boardView!.addConstraints(NSLayoutConstraint .constraintsWithVisualFormat("V:[aboveSquare][square]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["aboveSquare": aboveSquare, "square": square]))
                     self.boardView!.addConstraint(NSLayoutConstraint(item: aboveSquare, attribute: .Height, relatedBy: .Equal, toItem: square, attribute: .Height, multiplier: 1.0, constant: 0))
                 }
             }
@@ -123,7 +123,7 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate, PVSBoardSquar
     
     func squareTouchedAt(column: Int, row: Int) {
         let squareTouchedAtFunction = self.context!.objectForKeyedSubscript("board").objectForKeyedSubscript("squareTouchedAt")
-        if !squareTouchedAtFunction.isUndefined() {
+        if !squareTouchedAtFunction.isUndefined {
             squareTouchedAtFunction.callWithArguments([column, row])
         }
     }
@@ -179,7 +179,7 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate, PVSBoardSquar
     
     func squareClickedAt(column: NSInteger, row: NSInteger) {
         let squareClickedAtFunction = self.context!.objectForKeyedSubscript("board").objectForKeyedSubscript("squareClickedAt")
-        if !squareClickedAtFunction.isUndefined() {
+        if !squareClickedAtFunction.isUndefined {
             squareClickedAtFunction.callWithArguments([column, row])
         }
     }
@@ -187,6 +187,6 @@ class PVSBoard: NSObject, PVSBoardJSExports, PVSBoardViewDelegate, PVSBoardSquar
 
     func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         var localPosition = touches.anyObject()?.locationInView(self.boardView!)
-        println(localPosition)
+        print(localPosition)
     }
 }

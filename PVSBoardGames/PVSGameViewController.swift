@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import WebKit
+import JavaScriptCore
+
 
 class PVSGameViewController: UIViewController {
     var gameName: String = "cram"
